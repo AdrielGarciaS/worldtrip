@@ -1,12 +1,16 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, VStack } from '@chakra-ui/react';
 
 import { theme } from 'styles/theme';
+import { Header } from 'components/Header';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <VStack align="flex-start" spacing={0}>
+        <Header />
+        <Component {...pageProps} />
+      </VStack>
     </ChakraProvider>
   );
 }
