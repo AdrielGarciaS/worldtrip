@@ -13,10 +13,10 @@ export const theme = extendTheme({
       400: '#999999',
       600: '#47585B',
     },
-    fonts: {
-      heading: 'Poppins',
-      body: 'Poppins',
-    },
+  },
+  fonts: {
+    heading: 'Poppins',
+    body: 'Poppins',
   },
   styles: {
     global: {
