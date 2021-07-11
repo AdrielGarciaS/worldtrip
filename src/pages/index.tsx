@@ -5,9 +5,9 @@ import {
   Text,
   Image,
   HStack,
-  Center,
   Divider,
 } from '@chakra-ui/react';
+import { Carousel, CarouselSlide } from 'components/Carousel';
 
 const categories = [
   {
@@ -32,17 +32,38 @@ const categories = [
   },
 ];
 
+const continents: CarouselSlide[] = [
+  {
+    key: 'Europa',
+    bgImage: '/assets/europe-skyline.jpg',
+    title: 'Europa',
+    description: 'O continente mais antigo.',
+  },
+  {
+    key: 'America',
+    bgImage: '/assets/america-skyline.jpg',
+    title: 'América',
+  },
+];
+
 export default function Home() {
   return (
-    <VStack w="full">
+    <VStack
+      w="full"
+      align="center"
+      justify="center"
+      spacing="14"
+      maxW={1240}
+      pb="2.5rem"
+    >
       <Box
-        w="full"
+        w="100vw"
         h="20.937rem"
         paddingInline="32"
         bgImage="url('/assets/sky-background.svg')"
         bgPosition="center"
         bgRepeat="no-repeat"
-        mb="20"
+        mb="7"
       >
         <Flex align="flex-start" justify="space-between" pt="24">
           <Box mb="5">
@@ -73,7 +94,7 @@ export default function Home() {
         </Flex>
       </Box>
 
-      <Box w="full" pb="20">
+      <Box w="full" pb="7">
         <HStack spacing="32" align="center" justify="center">
           {categories.map(category => (
             <VStack key={category.title} align="center">
@@ -94,18 +115,17 @@ export default function Home() {
         borderRadius="1px"
       />
 
-      <Center>
-        <Text
-          textAlign="center"
-          marginBlock="14"
-          lineHeight="3.375rem"
-          fontSize="xx-large"
-          fontWeight="500"
-        >
-          Vamos nessa? <br />
-          Então escolha seu continente
-        </Text>
-      </Center>
+      <Text
+        textAlign="center"
+        lineHeight="3.375rem"
+        fontSize="xx-large"
+        fontWeight="500"
+      >
+        Vamos nessa? <br />
+        Então escolha seu continente
+      </Text>
+
+      <Carousel slides={continents} />
     </VStack>
   );
 }
