@@ -13,13 +13,7 @@ import { Header } from 'components/Header';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <VStack
-        align="center"
-        justify="center"
-        spacing={0}
-        marginInline="auto"
-        maxW={1440}
-      >
+      <VStack align="center" justify="center" spacing={0} mx="auto" maxW={1440}>
         <Header />
         <Component {...pageProps} />
       </VStack>

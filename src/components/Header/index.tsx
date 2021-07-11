@@ -16,8 +16,8 @@ export const Header = () => {
       as="header"
       w="100%"
       h="20"
-      paddingInline="32"
-      paddingBlock="2"
+      px="32"
+      py="2"
       align="center"
       justify="center"
     >
@@ -37,7 +37,7 @@ export const Header = () => {
           alt="World Trip"
           h={45}
           fontSize="8"
-          marginInline="auto"
+          mx="auto"
         />
       </Flex>
     </Flex>

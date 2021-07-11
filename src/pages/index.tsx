@@ -59,7 +59,7 @@ export default function Home() {
       <Box
         w="100vw"
         h="20.937rem"
-        paddingInline="32"
+        px="32"
         bgImage="url('/assets/sky-background.svg')"
         bgPosition="center"
         bgRepeat="no-repeat"
