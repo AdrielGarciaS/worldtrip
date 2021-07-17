@@ -46,13 +46,17 @@ export const Carousel = (props: Props) => {
               <VStack h="full" w="full" align="center" justify="center">
                 <Text
                   color="white"
-                  fontSize="3rem"
+                  fontSize={['1.5rem', '1.5rem', '3rem']}
                   fontWeight="700"
-                  lineHeight="4.5rem"
+                  lineHeight={['2.25rem', '2.25rem', '4.5rem']}
                   textAlign="center"
                 >
                   {slide.title}
-                  <Text fontSize="1.5rem" lineHeight="2.25rem" mt="1rem">
+                  <Text
+                    fontSize={['0.937rem', '0.937rem', '1.5rem']}
+                    lineHeight={['1.31rem', '1.31rem', '2.25rem']}
+                    mt="1rem"
+                  >
                     {slide.description}
                   </Text>
                 </Text>
