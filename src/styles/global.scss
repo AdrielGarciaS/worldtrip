@@ -34,3 +34,9 @@
   background: var(--chakra-colors-yellow-200);
   opacity: 1;
 }
+
+.swiper-wrapper {
+  &:hover {
+    cursor: pointer;
+  }
+}

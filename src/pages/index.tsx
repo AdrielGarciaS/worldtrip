@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/dist/client/router';
 import {
   VStack,
   Box,
@@ -10,7 +12,7 @@ import {
   Stack,
   GridItem,
 } from '@chakra-ui/react';
-import { Carousel, CarouselSlide } from 'components/Carousel';
+import { Carousel } from 'components/Carousel';
 
 const categories = [
   {
@@ -35,25 +37,23 @@ const categories = [
   },
 ];
 
-const continents: CarouselSlide[] = [
-  {
-    key: 'Europa',
-    bgImage: '/assets/europe-skyline.jpg',
-    title: 'Europa',
-    description: 'O continente mais antigo.',
-  },
-  {
-    key: 'America',
-    bgImage: '/assets/america-skyline.jpg',
-    title: 'América',
-  },
-];
+interface Props {
+  continents: CarouselSlide[];
+}
 
-export default function Home() {
+export default function Home(props: Props) {
+  const { continents } = props;
+
+  const router = useRouter();
+
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
+
+  const handleClickSlide = (slide: CarouselSlide) => {
+    router.push(`continents/${slide.slug}`);
+  };
 
   return (
     <VStack
@@ -181,7 +181,30 @@ export default function Home() {
         Então escolha seu continente
       </Text>
 
-      <Carousel slides={continents} />
+      <Carousel slides={continents} onClick={handleClickSlide} />
     </VStack>
   );
 }
+
+const oneDay = 60 * 60 * 24;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const continents: CarouselSlide[] = [
+    {
+      slug: 'europa',
+      bgImage: '/assets/europe-skyline.jpg',
+      title: 'Europa',
+      description: 'O continente mais antigo.',
+    },
+    {
+      slug: 'america',
+      bgImage: '/assets/america-skyline.jpg',
+      title: 'América',
+    },
+  ];
+
+  return {
+    props: { continents },
+    revalidate: oneDay,
+  };
+};

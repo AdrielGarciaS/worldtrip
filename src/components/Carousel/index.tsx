@@ -7,21 +7,19 @@ import styles from './styles.module.scss';
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-export interface CarouselSlide {
-  bgImage?: string;
-  title?: string;
-  description?: string;
-  key: string;
-}
-
 interface Props {
   height?: number | string;
   width?: number | string;
   slides: CarouselSlide[];
+  onClick?(slug: CarouselSlide): void;
 }
 
 export const Carousel = (props: Props) => {
-  const { height = 450, width = '100%', slides } = props;
+  const { height = 450, width = '100%', slides, onClick } = props;
+
+  const onClickSlide = (slide: CarouselSlide) => () => {
+    onClick?.(slide);
+  };
 
   return (
     <Box h={height} w={width} maxW={1240}>
@@ -34,7 +32,7 @@ export const Carousel = (props: Props) => {
         className={styles.swiperContainer}
       >
         {slides.map(slide => (
-          <SwiperSlide key={slide.key}>
+          <SwiperSlide key={slide.slug} onClick={onClickSlide(slide)}>
             <Box
               h="full"
               w="full"
