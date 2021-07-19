@@ -1,4 +1,4 @@
-interface CarouselSlide {
+interface Continent {
   bgImage?: string;
   title?: string;
   description?: string;

@@ -10,14 +10,14 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 interface Props {
   height?: number | string;
   width?: number | string;
-  slides: CarouselSlide[];
-  onClick?(slug: CarouselSlide): void;
+  slides: Continent[];
+  onClick?(slug: Continent): void;
 }
 
 export const Carousel = (props: Props) => {
   const { height = 450, width = '100%', slides, onClick } = props;
 
-  const onClickSlide = (slide: CarouselSlide) => () => {
+  const onClickSlide = (slide: Continent) => () => {
     onClick?.(slide);
   };
 

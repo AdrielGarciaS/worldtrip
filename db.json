@@ -1,0 +1,19 @@
+{
+  "continents": [
+    {
+      "id": 1,
+      "slug": "europa",
+      "bgImage": "/assets/europe-skyline.jpg",
+      "coverImage": "/assets/europe-banner.jpg",
+      "title": "Europa",
+      "description": "O continente mais antigo."
+    },
+    {
+      "id": 2,
+      "slug": "america",
+      "bgImage": "/assets/america-skyline.jpg",
+      "coverImage": "/assets/europe-banner.jpg",
+      "title": "América"
+    }
+  ]
+}

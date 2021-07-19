@@ -13,6 +13,7 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 import { Carousel } from 'components/Carousel';
+import { api } from 'services/api';
 
 const categories = [
   {
@@ -38,7 +39,7 @@ const categories = [
 ];
 
 interface Props {
-  continents: CarouselSlide[];
+  continents: Continent[];
 }
 
 export default function Home(props: Props) {
@@ -51,7 +52,7 @@ export default function Home(props: Props) {
     lg: true,
   });
 
-  const handleClickSlide = (slide: CarouselSlide) => {
+  const handleClickSlide = (slide: Continent) => {
     router.push(`continents/${slide.slug}`);
   };
 
@@ -189,22 +190,10 @@ export default function Home(props: Props) {
 const oneDay = 60 * 60 * 24;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const continents: CarouselSlide[] = [
-    {
-      slug: 'europa',
-      bgImage: '/assets/europe-skyline.jpg',
-      title: 'Europa',
-      description: 'O continente mais antigo.',
-    },
-    {
-      slug: 'america',
-      bgImage: '/assets/america-skyline.jpg',
-      title: 'América',
-    },
-  ];
+  const response = await api.get('continents');
 
   return {
-    props: { continents },
+    props: { continents: response.data },
     revalidate: oneDay,
   };
 };
