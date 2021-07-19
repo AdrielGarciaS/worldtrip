@@ -6,7 +6,18 @@
       "bgImage": "/assets/europe-skyline.jpg",
       "coverImage": "/assets/europe-banner.jpg",
       "title": "Europa",
-      "description": "O continente mais antigo."
+      "description": "O continente mais antigo.",
+      "longDescription": "A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste",
+      "countriesQuantity": 50,
+      "languagesQuantity": 60,
+      "citiesQuantity": 27,
+      "cities": [
+        { "name": "Londres", "country": "Reino Unido" },
+        { "name": "Paris", "country": "França" },
+        { "name": "Roma", "country": "Itália" },
+        { "name": "Praga", "country": "República Tcheca" },
+        { "name": "Amsterdã", "country": "Holanda" }
+      ]
     },
     {
       "id": 2,
