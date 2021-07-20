@@ -33,7 +33,7 @@ export const Header = () => {
         )}
 
         <Image
-          src="assets/logo.svg"
+          src="/assets/logo.svg"
           alt="World Trip"
           h={45}
           fontSize="8"
