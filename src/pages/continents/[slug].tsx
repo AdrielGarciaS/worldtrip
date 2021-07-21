@@ -7,10 +7,55 @@ import {
   GridItem,
   Grid,
   Icon,
+  Image,
 } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import { FiInfo } from 'react-icons/fi';
 import { api } from 'services/api';
+
+interface CityOverViewProps {
+  city: City;
+}
+
+const CityOverview = (props: CityOverViewProps) => {
+  const { city } = props;
+  return (
+    <Box
+      w="16rem"
+      h="17.437rem"
+      bg="white"
+      border="1px"
+      borderColor="yellow.100"
+      borderRadius="4px"
+    >
+      <Image src={city.photo} alt={city.name} w="full" />
+
+      <HStack
+        w="full"
+        alignItems="center"
+        justify="space-between"
+        p="1.5rem"
+        pt="1.125rem"
+      >
+        <VStack alignItems="flex-start">
+          <Text fontWeight="600" fonSize="1.25rem" lineHeight="1.5rem">
+            {city.name}
+          </Text>
+          <Text fontSize="1rem" lineHeight="1.625rem" color="gray.400">
+            {city.country}
+          </Text>
+        </VStack>
+
+        <Image
+          src={city.flagImg}
+          alt={city.country}
+          w="1.875rem"
+          h="1.875rem"
+        />
+      </HStack>
+    </Box>
+  );
+};
 
 interface Props {
   continent: Continent;
@@ -19,11 +64,15 @@ interface Props {
 const Continent = (props: Props) => {
   const { continent } = props;
 
-  console.log(continent);
-
   return (
     <>
-      <Box w="100vw" h="31.25rem" bgImage={`url('${continent.coverImage}')`}>
+      <Box
+        w="full"
+        h="31.25rem"
+        bgImage={`url('${continent.coverImage}')`}
+        bgRepeat="no-repeat"
+        mx="auto"
+      >
         <Flex align="flex-end" h="full" pl="8.75rem" pb="3.75rem">
           <Text
             lineHeight="4.5rem"
@@ -36,13 +85,7 @@ const Continent = (props: Props) => {
         </Flex>
       </Box>
 
-      <VStack
-        spacing="5rem"
-        maxW={1160}
-        align="center"
-        justify="center"
-        px="8rem"
-      >
+      <VStack spacing="5rem" maxW={1160} align="center" justify="center">
         <Grid
           templateColumns="repeat(2, 1fr)"
           mt="5rem"
@@ -103,6 +146,31 @@ const Continent = (props: Props) => {
             </HStack>
           </GridItem>
         </Grid>
+
+        <VStack w="full" align="flex-start">
+          <Text
+            fontSize="2.25rem"
+            fontWeight="500"
+            lineHeight="3.375rem"
+            textAlign="left"
+            mb="2.5rem"
+          >
+            Cidades +100
+          </Text>
+
+          <Grid
+            gridTemplateColumns="repeat(4, 1fr)"
+            columnGap="2.8rem"
+            rowGap="3rem"
+            pb="5rem"
+          >
+            {continent.cities.map(city => (
+              <GridItem key={city.name}>
+                <CityOverview city={city} />
+              </GridItem>
+            ))}
+          </Grid>
+        </VStack>
       </VStack>
     </>
   );

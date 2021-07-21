@@ -12,11 +12,36 @@
       "languagesQuantity": 60,
       "citiesQuantity": 27,
       "cities": [
-        { "name": "Londres", "country": "Reino Unido" },
-        { "name": "Paris", "country": "França" },
-        { "name": "Roma", "country": "Itália" },
-        { "name": "Praga", "country": "República Tcheca" },
-        { "name": "Amsterdã", "country": "Holanda" }
+        {
+          "name": "Londres",
+          "country": "Reino Unido",
+          "flagImg": "/assets/uk-flag.jpg",
+          "photo": "/assets/london.jpg"
+        },
+        {
+          "name": "Paris",
+          "country": "França",
+          "flagImg": "/assets/france-flag.jpg",
+          "photo": "/assets/paris.jpg"
+        },
+        {
+          "name": "Roma",
+          "country": "Itália",
+          "flagImg": "/assets/italy-flag.jpg",
+          "photo": "/assets/rome.jpg"
+        },
+        {
+          "name": "Praga",
+          "country": "República Tcheca",
+          "flagImg": "/assets/cr-flag.jpg",
+          "photo": "/assets/prague.jpg"
+        },
+        {
+          "name": "Amsterdã",
+          "country": "Holanda",
+          "flagImg": "/assets/netherlands-flag.jpg",
+          "photo": "/assets/amsterdam.jpg"
+        }
       ]
     },
     {
@@ -24,7 +49,8 @@
       "slug": "america",
       "bgImage": "/assets/america-skyline.jpg",
       "coverImage": "/assets/europe-banner.jpg",
-      "title": "América"
+      "title": "América",
+      "cities": []
     }
   ]
 }

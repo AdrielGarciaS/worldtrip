@@ -1,6 +1,8 @@
 interface City {
   name: string;
   country: string;
+  flagImg: string;
+  photo: string;
 }
 
 interface Continent {
@@ -14,5 +16,5 @@ interface Continent {
   countriesQuantity: number;
   languagesQuantity: number;
   citiesQuantity: number;
-  cities: City;
+  cities: City[];
 }
