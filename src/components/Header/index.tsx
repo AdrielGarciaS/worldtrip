@@ -16,7 +16,7 @@ export const Header = () => {
       as="header"
       w="100%"
       h="20"
-      px="32"
+      px={[0, 0, '32']}
       py="2"
       align="center"
       justify="center"
@@ -27,15 +27,16 @@ export const Header = () => {
             onClick={handleGoBack}
             aria-label="Navigate back"
             icon={<Icon as={FiChevronLeft} />}
-            mr="4"
+            ml="1rem"
             bg="transparent"
+            fontSize="1.875rem"
           />
         )}
 
         <Image
           src="/assets/logo.svg"
           alt="World Trip"
-          h={45}
+          h={['100%', '100%', '45px']}
           fontSize="8"
           mx="auto"
         />
