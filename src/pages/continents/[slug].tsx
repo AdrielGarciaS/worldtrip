@@ -10,6 +10,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
+import { ReactNode } from 'react';
 import { FiInfo } from 'react-icons/fi';
 import { api } from 'services/api';
 
@@ -57,6 +58,35 @@ const CityOverview = (props: CityOverViewProps) => {
   );
 };
 
+interface CityInfoProps {
+  amount: number;
+  title: ReactNode;
+}
+
+const CityInfo = (props: CityInfoProps) => {
+  const { amount, title } = props;
+
+  return (
+    <VStack align={['flex-start', 'flex-start', 'center']}>
+      <Text
+        fontSize={['1.5rem', '1.5rem', '3rem']}
+        lineHeight={['2.25rem', '2.25rem', '4.5rem']}
+        fontWeight="600"
+        color="yellow.200"
+      >
+        {amount}
+      </Text>
+      <Text
+        fontSize={['1.125rem', '1.125rem', '1.5rem']}
+        lineHeight={['1.69rem', '1.69rem', '1.875rem']}
+        fontWeight="600"
+      >
+        {title}
+      </Text>
+    </VStack>
+  );
+};
+
 interface Props {
   continent: Continent;
 }
@@ -68,15 +98,22 @@ const Continent = (props: Props) => {
     <>
       <Box
         w="full"
-        h="31.25rem"
+        h={['9.375rem', '9.375rem', '31.25rem']}
         bgImage={`url('${continent.coverImage}')`}
+        bgSize="cover"
         bgRepeat="no-repeat"
         mx="auto"
       >
-        <Flex align="flex-end" h="full" pl="8.75rem" pb="3.75rem">
+        <Flex
+          align={['center', 'center', 'flex-end']}
+          justify={['center', 'center', 'flex-start']}
+          h="full"
+          pl={[0, 0, '8.75rem']}
+          pb={[0, 0, '3.75rem']}
+        >
           <Text
-            lineHeight="4.5rem"
-            fontSize="3rem"
+            lineHeight={['2.625rem', '2.625rem', '4.5rem']}
+            fontSize={['1.75rem', '1.75rem', '3rem']}
             fontWeight="600"
             color="white"
           >
@@ -85,81 +122,67 @@ const Continent = (props: Props) => {
         </Flex>
       </Box>
 
-      <VStack spacing="5rem" maxW={1160} align="center" justify="center">
+      <VStack
+        spacing={['1.5rem', '1.5rem', '5rem']}
+        maxW={1160}
+        align="center"
+        justify="center"
+      >
         <Grid
-          templateColumns="repeat(2, 1fr)"
-          mt="5rem"
+          templateColumns={['1fr', '1fr', 'repeat(2, 1fr)']}
+          mt={['1.5rem', '1.5rem', '5rem']}
           alignItems="center"
-          gap="4.375rem"
+          gap={['1rem', '1rem', '4.375rem']}
         >
           <GridItem>
-            <Text textAlign="justify">{continent.longDescription}</Text>
+            <Text textAlign="justify" px="1rem">
+              {continent.longDescription}
+            </Text>
           </GridItem>
 
           <GridItem>
-            <HStack align="center" spacing="2.625rem">
-              <VStack>
-                <Text
-                  fontSize="3rem"
-                  lineHeight="4.5rem"
-                  fontWeight="600"
-                  color="yellow.200"
-                >
-                  {continent.countriesQuantity}
-                </Text>
-                <Text fontSize="1.5rem" lineHeight="1.875rem" fontWeight="600">
-                  países
-                </Text>
-              </VStack>
-              <VStack>
-                <Text
-                  fontSize="3rem"
-                  lineHeight="4.5rem"
-                  fontWeight="600"
-                  color="yellow.200"
-                >
-                  {continent.languagesQuantity}
-                </Text>
-                <Text fontSize="1.5rem" lineHeight="1.875rem" fontWeight="600">
-                  línguas
-                </Text>
-              </VStack>
-              <VStack>
-                <Text
-                  fontSize="3rem"
-                  lineHeight="4.5rem"
-                  fontWeight="600"
-                  color="yellow.200"
-                >
-                  {continent.citiesQuantity}
-                </Text>
-                <Text
-                  fontSize="1.5rem"
-                  lineHeight="1.875rem"
-                  fontWeight="600"
-                  whiteSpace="nowrap"
-                >
-                  cidades +100
-                  <Icon as={FiInfo} color="gray.200" ml="5px" />
-                </Text>
-              </VStack>
+            <HStack
+              align="center"
+              spacing={['2.25rem', '2.25rem', '2.625rem']}
+              px="1rem"
+            >
+              <CityInfo title="países" amount={continent.countriesQuantity} />
+              <CityInfo title="línguas" amount={continent.languagesQuantity} />
+              <CityInfo
+                title={
+                  <>
+                    cidades +100
+                    <Icon
+                      as={FiInfo}
+                      color="gray.200"
+                      ml="5px"
+                      fontSize={['0.625rem', '0.625rem', '1rem']}
+                    />
+                  </>
+                }
+                amount={continent.citiesQuantity}
+              />
             </HStack>
           </GridItem>
         </Grid>
 
-        <VStack w="full" align="flex-start">
+        <VStack w="full" align={['center', 'center', 'flex-start']}>
           <Text
-            fontSize="2.25rem"
+            fontSize={['1.5rem', '1.5rem', '2.25rem']}
             fontWeight="500"
-            lineHeight="3.375rem"
+            lineHeight={['2.25rem', '2.25rem', '3.375rem']}
             textAlign="left"
             mb="2.5rem"
+            ml={['1rem', '1rem', 0]}
+            alignSelf="flex-start"
           >
             Cidades +100
           </Text>
 
           <Grid
-            gridTemplateColumns="repeat(4, 1fr)"
+            gridTemplateColumns={['1fr', '1fr', 'repeat(4, 1fr)']}
+            alignItems="center"
+            justifyContent="center"
             columnGap="2.8rem"
             rowGap="3rem"
             pb="5rem"
